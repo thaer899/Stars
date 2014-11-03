@@ -26,7 +26,10 @@ public class Statistic extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        Lb_HomeIcon = new javax.swing.JLabel();
         MenuBar1 = new javax.swing.JMenuBar();
         File_Menu = new javax.swing.JMenu();
         File_Home_Menu = new javax.swing.JMenuItem();
@@ -40,9 +43,40 @@ public class Statistic extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(600, 400));
         getContentPane().setLayout(null);
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "Title ", "Tag", "Date", "Views", "Contribuates", "Like"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(40, 160, 452, 170);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ideastarter/Image/free-vector-bach-statistics-icon.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 400, 280);
+        jLabel1.setBounds(20, -120, 450, 450);
+
+        Lb_HomeIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ideastarter/Image/MB__home.png"))); // NOI18N
+        Lb_HomeIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Lb_HomeIconMouseClicked(evt);
+            }
+        });
+        getContentPane().add(Lb_HomeIcon);
+        Lb_HomeIcon.setBounds(510, 10, 60, 70);
 
         File_Menu.setText("File");
 
@@ -107,6 +141,12 @@ public class Statistic extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Help_About_MenuActionPerformed
 
+    private void Lb_HomeIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Lb_HomeIconMouseClicked
+        // TODO add your handling code here:
+        new GestionHomeUser().setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_Lb_HomeIconMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -148,7 +188,10 @@ public class Statistic extends javax.swing.JFrame {
     private javax.swing.JMenuItem Help_About_Menu;
     private javax.swing.JMenuItem Help_Help_Menu;
     private javax.swing.JMenu Help_Menu;
+    private javax.swing.JLabel Lb_HomeIcon;
     private javax.swing.JMenuBar MenuBar1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }
