@@ -8,6 +8,7 @@ import ideastarter.util.CreateConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -183,12 +184,38 @@ public class Authentification extends javax.swing.JFrame {
     private void bt_connectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_connectActionPerformed
         String item = (String) jComboBox2.getSelectedItem();
         if (item.equals("Administrateur")) {
-            GestionHome appelFenetre = new GestionHome();
-            appelFenetre.setVisible(true);
+            String sql ="select * from ajoutadmin where Login=? and Password = ?";
+            try {
+             pst=conn.prepareStatement(sql);
+             pst.setString(1,txt_Login.getText());
+             pst.setString(2,Passe_Password.getText());
+             rs=pst.executeQuery();
+             if(rs.next()){
+              //JOptionPane.showMessageDialog(null,"Login and Password is Correct");
+              GestionHome appelFenetre = new GestionHome();
+              appelFenetre.setVisible(true);
+              setVisible(false);
+             }
+            else{JOptionPane.showMessageDialog(null,"Login and Password is Not Correct");}
+            } catch (Exception e) {
+            }
         } else {
-            new GestionHomeUser().setVisible(true);
+            String sql ="select * from UserInformation  where Nickname=? and Password = ?";
+            try {
+             pst=conn.prepareStatement(sql);
+             pst.setString(1,txt_Login.getText());
+             pst.setString(2,Passe_Password.getText());
+             rs=pst.executeQuery();
+             if(rs.next()){
+              JOptionPane.showMessageDialog(null,"Login and Password is Correct");
+              new GestionHomeUser().setVisible(true);
+              setVisible(false);
+             }
+             else{JOptionPane.showMessageDialog(null,"Login and Password is Not Correct");}
+            } catch (Exception e) {
+            }
         }
-                    setVisible(false);
+                    
 
     }//GEN-LAST:event_bt_connectActionPerformed
 
